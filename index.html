@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROVESEG - Soluciones Integrales de Seguridad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            width: 200px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .cart-icon, .user-icon {
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            color: var(--white);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 108, 0.85), rgba(26, 58, 108, 0.85)), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?ixlib=rb-4.0.3') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 4rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        /* Categories */
+        .categories {
+            padding: 4rem 0;
+            background-color: #f8f9fa;
+        }
+        
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .category-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .category-img {
+            height: 180px;
+            background-color: var(--gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3rem;
+        }
+        
+        .category-content {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .category-content h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Products */
+        .products {
+            padding: 4rem 0;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 200px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .btn-cart {
+            background-color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-cart:hover {
+            background-color: #21867a;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 4rem 0;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .testimonials .section-title h2 {
+            color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        
+        .testimonial-content {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .testimonial-content::before {
+            content: ;
+            font-size: 4rem;
+            position: absolute;
+            top: -30px;
+            left: -15px;
+            opacity: 0.2;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            margin-right: 1rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            padding: 4rem 0;
+            background-color: var(--accent);
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .newsletter h2 {
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            background-color: var(--secondary);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            border-radius: 0 30px 30px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+        
+        .newsletter-form button:hover {
+            background-color: #c1121f;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                margin: 1.5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-form button {
+                border-radius: 30px;
+                padding: 0.8rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div style="background-color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
+                <h1>PROVESEG</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="#"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="#"><i class="fas fa-box"></i> Productos</a></li>
+                <li><a href="#"><i class="fas fa-cogs"></i> Servicios</a></li>
+                <li><a href="#"><i class="fas fa-building"></i> Empresa</a></li>
+                <li><a href="#"><i class="fas fa-phone"></i> Contacto</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar productos...">
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </div>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Soluciones de Seguridad para tu Hogar y Negocio</h2>
+            <p>En PROVESEG ofrecemos los mejores sistemas de seguridad con tecnología de punta y atención personalizada. Protege lo que más importa con nuestros productos certificados.</p>
+            <a href="#" class="btn">Ver Productos</a>
+            <a href="#" class="btn btn-outline">Contactar Asesor</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por Qué Elegirnos?</h2>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Seguridad Garantizada</h3>
+                    <p>Productos con certificaciones internacionales y los más altos estándares de calidad.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Envío Rápido</h3>
+                    <p>Entrega en todo el país en 24-48 horas. Garantía de satisfacción o devolución.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Soporte 24/7</h3>
+                    <p>Nuestros expertos están disponibles para ayudarte en cualquier momento del día.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Pago Seguro</h3>
+                    <p>Plataformas de pago cifradas con los más altos estándares de seguridad.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <div class="section-title">
+                <h2>Categorías de Productos</h2>
+            </div>
+            
+            <div class="categories-grid">
+                <div class="category-card">
+                    <div class="category-img" style="background: linear-gradient(rgba(42, 157, 143, 0.8), rgba(42, 157, 143, 0.8));">
+                        <i class="fas fa-video" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Sistemas CCTV</h3>
+                        <p>Cámaras de vigilancia HD y 4K</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background: linear-gradient(rgba(230, 57, 70, 0.8), rgba(230, 57, 70, 0.8));">
+                        <i class="fas fa-bell" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Alarmas</h3>
+                        <p>Sistemas de detección de intrusos</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background: linear-gradient(rgba(29, 53, 87, 0.8), rgba(29, 53, 87, 0.8));">
+                        <i class="fas fa-key" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Control de Acceso</h3>
+                        <p>Cerraduras electrónicas y lectores</p>
+                    </div>
+                </div>
+                
+                <div class="category-card">
+                    <div class="category-img" style="background: linear-gradient(rgba(26, 58, 108, 0.8), rgba(26, 58, 108, 0.8));">
+                        <i class="fas fa-fire" style="font-size: 3.5rem;"></i>
+                    </div>
+                    <div class="category-content">
+                        <h3>Detección de Incendios</h3>
+                        <p>Sensores y sistemas anti-incendio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products">
+        <div class="container">
+            <div class="products-header">
+                <div class="section-title">
+                    <h2>Productos Destacados</h2>
+                </div>
+                <a href="#" class="btn">Ver Todos</a>
+            </div>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-img" style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), #e9ecef;">
+                        <i class="fas fa-video" style="font-size: 4rem; color: var(--primary);"></i>
+                        <span class="product-tag">Nuevo</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cámara IP 4K Exterior</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(24)</span>
+                        </div>
+                        <div class="product-price">$189.99</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <i class="far fa-heart" style="font-size: 1.3rem; color: var(--gray); cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), #e9ecef;">
+                        <i class="fas fa-bell" style="font-size: 4rem; color: var(--secondary);"></i>
+                        <span class="product-tag">Oferta</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Kit Alarma Inalámbrica</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span>(18)</span>
+                        </div>
+                        <div class="product-price">$299.99 <span style="text-decoration: line-through; color: var(--gray); font-size: 0.9rem;">$349.99</span></div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <i class="far fa-heart" style="font-size: 1.3rem; color: var(--gray); cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), #e9ecef;">
+                        <i class="fas fa-lock" style="font-size: 4rem; color: var(--dark);"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cerrojo Digital Inteligente</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span>(32)</span>
+                        </div>
+                        <div class="product-price">$149.99</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <i class="far fa-heart" style="font-size: 1.3rem; color: var(--gray); cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-img" style="background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), #e9ecef;">
+                        <i class="fas fa-fire-extinguisher" style="font-size: 4rem; color: var(--accent);"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Detector de Humo Inteligente</h3>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span>(15)</span>
+                        </div>
+                        <div class="product-price">$79.99</div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <i class="far fa-heart" style="font-size: 1.3rem; color: var(--gray); cursor: pointer;"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Instalé el sistema de cámaras de PROVESEG en mi negocio y la diferencia es notable. La calidad de imagen es excelente y el soporte técnico resolvió mis dudas rápidamente."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>Carlos Rodríguez</h4>
+                            <p>Dueño de Tienda</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "La alarma para mi hogar superó mis expectativas. Fácil de instalar y configurar, y la aplicación móvil es muy intuitiva. Me siento mucho más seguro con mi familia."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>María González</h4>
+                            <p>Cliente Residencial</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Como administrador de condominios, PROVESEG nos ha proporcionado soluciones integrales que han mejorado la seguridad de todo el complejo. Profesionales y confiables."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img"></div>
+                        <div>
+                            <h4>Jorge Martínez</h4>
+                            <p>Administrador de Condominio</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container newsletter-content">
+            <h2>Mantente Informado</h2>
+            <p>Suscríbete a nuestro boletín para recibir ofertas exclusivas, consejos de seguridad y las últimas novedades en tecnología de protección.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" placeholder="Tu correo electrónico" required>
+                <button type="submit">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>PROVESEG</h3>
+                    <p>Líderes en soluciones de seguridad para hogares y empresas desde 2005. Ofrecemos productos de calidad y servicios profesionales.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cámaras de Vigilancia</a></li>
+                        <li><a href="#">Sistemas de Alarma</a></li>
+                        <li><a href="#">Control de Acceso</a></li>
+                        <li><a href="#">Detección de Incendios</a></li>
+                        <li><a href="#">Productos para Vehículos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Principal 1234, Ciudad, País</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (800) 123-4567</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@proveseg.com</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <p>Lun-Vie: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PROVESEG. Todos los derechos reservados. | <a href="#" style="color: #adb5bd;">Términos y Condiciones</a> | <a href="#" style="color: #adb5bd;">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simulación de funcionalidad del carrito
+        document.querySelectorAll('.btn-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Animación
+                this.innerHTML = '<i class="fas fa-check"></i> Añadido';
+                setTimeout(() => {
+                    this.innerHTML = '<i class="fas fa-shopping-cart"></i> Añadir';
+                }, 2000);
+            });
+        });
+        
+        // Cambio de icono al favorito
+        document.querySelectorAll('.fa-heart').forEach(icon => {
+            icon.addEventListener('click', function() {
+                if (this.classList.contains('far')) {
+                    this.classList.remove('far');
+                    this.classList.add('fas');
+                    this.style.color = 'var(--secondary)';
+                } else {
+                    this.classList.remove('fas');
+                    this.classList.add('far');
+                    this.style.color = 'var(--gray)';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
