@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | PROVESEG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            width: 200px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .cart-icon, .user-icon {
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            color: var(--white);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .contact-hero {
+            background: linear-gradient(rgba(26, 58, 108, 0.85), rgba(26, 58, 108, 0.85)), url('https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .contact-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .contact-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-info h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-icon i {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+        
+        .contact-details h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .contact-details a {
+            color: var(--primary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .contact-details a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+        
+        .business-hours {
+            margin-top: 2rem;
+        }
+        
+        .hours-list {
+            list-style: none;
+        }
+        
+        .hours-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #f1f3f5;
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background: #21867a;
+            transform: translateY(-3px);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 0 0 5rem;
+        }
+        
+        .map-container {
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 10px;
+            max-width: 300px;
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+        
+        .map-overlay h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .map-overlay p {
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Support Section */
+        .support-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+        }
+        
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .support-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .support-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .support-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        .support-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            background: var(--light);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .contact-info-footer {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info-footer i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                margin: 1.5rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .map-overlay {
+                position: relative;
+                max-width: 100%;
+                bottom: 0;
+                left: 0;
+                margin-top: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div style="background-color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
+                <h1>PROVESEG</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="PRODUCTOS.html"><i class="fas fa-box"></i> Productos</a></li>
+                <li><a href="SERVICIO.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+                <li><a href="EMPRESA.html"><i class="fas fa-building"></i> Empresa</a></li>
+                <li><a href="CONTACTO.html" class="active"><i class="fas fa-phone"></i> Contacto</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar...">
+                </div>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container contact-hero-content">
+            <h1>¿En qué podemos ayudarte?</h1>
+            <p>Nuestro equipo de expertos está listo para responder tus consultas y brindarte soluciones de seguridad personalizadas.</p>
+            <a href="#contact-form" class="btn">Enviar Mensaje</a>
+            <a href="tel:+18001234567" class="btn btn-outline">Llámanos Ahora</a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctanos</h2>
+                <p>Múltiples formas de comunicarte con nuestro equipo</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Información de Contacto</h3>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Teléfono</h4>
+                            <p><a href="tel:+18001234567">+1 (800) 123-4567</a></p>
+                            <p><a href="tel:+18001234568">+1 (800) 123-4568</a> (Soporte Técnico)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email</h4>
+                            <p><a href="mailto:info@proveseg.com">info@proveseg.com</a></p>
+                            <p><a href="mailto:soporte@proveseg.com">soporte@proveseg.com</a> (Soporte)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Oficinas Centrales</h4>
+                            <p>Av. Seguridad 1234, Ciudad Central, CP 15001</p>
+                            <p><a href="#">Ver en el mapa</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="business-hours">
+                        <h4>Horario de Atención</h4>
+                        <ul class="hours-list">
+                            <li><span>Lunes - Viernes:</span> <span>8:00 AM - 6:00 PM</span></li>
+                            <li><span>Sábados:</span> <span>9:00 AM - 1:00 PM</span></li>
+                            <li><span>Domingos:</span> <span>Cerrado</span></li>
+                            <li><span>Soporte Técnico 24/7:</span> <span>Disponible</span></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div id="contact-form" class="contact-form">
+                    <h3>Envíanos un Mensaje</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico *</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" class="form-control">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Asunto *</label>
+                            <select id="subject" class="form-control" required>
+                                <option value="">Seleccione un asunto</option>
+                                <option value="consulta">Consulta General</option>
+                                <option value="soporte">Soporte Técnico</option>
+                                <option value="cotizacion">Solicitud de Cotización</option>
+                                <option value="ventas">Consulta de Ventas</option>
+                                <option value="empresa">Información Empresarial</option>
+                                <option value="otro">Otro</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje *</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="map-container">
+                <!-- Mapa de Google Maps (simulado) -->
+                <div style="width:100%;height:100%;background:linear-gradient(rgba(26,58,108,0.2), rgba(26,58,108,0.2)), #e9ecef;display:flex;align-items:center;justify-content:center;color:var(--primary);">
+                    <i class="fas fa-map-marker-alt" style="font-size: 4rem; margin-right: 1rem;"></i>
+                    <h3>Mapa de Ubicación</h3>
+                </div>
+                
+                <div class="map-overlay">
+                    <h3>Oficinas Centrales</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Av. Seguridad 1234, Ciudad Central</p>
+                    <p><i class="fas fa-phone"></i> +1 (800) 123-4567</p>
+                    <p><i class="fas fa-clock"></i> Lun-Vie: 8:00 AM - 6:00 PM</p>
+                    <p><i class="fas fa-parking"></i> Estacionamiento gratuito disponible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="support-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Soporte y Asistencia</h2>
+                <p>Nuestros canales de soporte para atenderte rápidamente</p>
+            </div>
+            
+            <div class="support-grid">
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3>Soporte Técnico</h3>
+                    <p>Asistencia técnica especializada 24/7 para resolver problemas con tus sistemas de seguridad.</p>
+                    <a href="tel:+18001234568" class="btn" style="margin-top: 1.5rem; background: var(--primary);">Llamar a Soporte</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Agendar Visita</h3>
+                    <p>Programa una visita de nuestros técnicos para instalación, mantenimiento o reparación.</p>
+                    <a href="#contact-form" class="btn" style="margin-top: 1.5rem; background: var(--primary);">Solicitar Visita</a>
+                </div>
+                
+                <div class="support-card">
+                    <div class="support-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Chat en Vivo</h3>
+                    <p>Conéctate con nuestro equipo de soporte a través de chat en tiempo real.</p>
+                    <a href="#" class="btn" style="margin-top: 1.5rem; background: var(--primary);">Iniciar Chat</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas más comunes sobre contacto y soporte</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuál es el tiempo de respuesta para consultas generales?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nuestro equipo se compromete a responder todas las consultas dentro de las 24 horas hábiles. Para solicitudes urgentes, recomendamos contactarnos por teléfono o a través de nuestro servicio de chat en vivo.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Ofrecen soporte técnico fuera del horario laboral?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, nuestro servicio de soporte técnico está disponible 24/7 los 365 días del año para emergencias y problemas críticos con sistemas de seguridad. Puedes contactarnos en cualquier momento al +1 (800) 123-4568.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cómo puedo solicitar una cotización para un sistema de seguridad?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Puedes solicitar una cotización completando nuestro formulario de contacto seleccionando "Solicitud de Cotización" en el campo de Asunto. También puedes llamar a nuestro departamento de ventas al +1 (800) 123-4567 o enviar un email a ventas@proveseg.com.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuál es la mejor forma de reportar un problema técnico?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Para reportar problemas técnicos, te recomendamos:</p>
+                        <ol>
+                            <li>Llamar a nuestro soporte técnico 24/7: +1 (800) 123-4568</li>
+                            <li>Usar nuestro chat en vivo desde el sitio web</li>
+                            <li>Enviar un email a soporte@proveseg.com con los detalles del problema</li>
+                        </ol>
+                        <p>Incluye siempre tu número de cliente y detalles del sistema para una atención más rápida.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Puedo visitar sus oficinas sin cita previa?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nuestras oficinas centrales están abiertas al público de Lunes a Viernes de 8:00 AM a 6:00 PM. Si bien no es estrictamente necesario agendar cita, te recomendamos contactarnos previamente para asegurarnos de que el especialista adecuado esté disponible para atenderte.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>PROVESEG</h3>
+                    <p>Líderes en soluciones de seguridad integral para hogares y empresas. Protegiendo lo que más importa desde 2005.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Empresa</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Instalación de CCTV</a></li>
+                        <li><a href="#">Sistemas de Alarma</a></li>
+                        <li><a href="#">Control de Acceso</a></li>
+                        <li><a href="#">Monitoreo 24/7</a></li>
+                        <li><a href="#">Soporte Técnico</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info-footer">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Seguridad 1234, Ciudad Central</p>
+                    </div>
+                    <div class="contact-info-footer">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (800) 123-4567</p>
+                    </div>
+                    <div class="contact-info-footer">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@proveseg.com</p>
+                    </div>
+                    <div class="contact-info-footer">
+                        <i class="fas fa-clock"></i>
+                        <p>Lun-Vie: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PROVESEG. Todos los derechos reservados. | <a href="#" style="color: #adb5bd;">Términos y Condiciones</a> | <a href="#" style="color: #adb5bd;">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simular envío exitoso
+                const submitBtn = this.querySelector('.btn-submit');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Mensaje Enviado';
+                    submitBtn.style.backgroundColor = '#2a9d8f';
+                    
+                    // Reset form after success
+                    setTimeout(() => {
+                        this.reset();
+                        submitBtn.innerHTML = 'Enviar Mensaje';
+                        submitBtn.style.backgroundColor = '';
+                        submitBtn.disabled = false;
+                        
+                        // Show success message
+                        alert('¡Gracias por tu mensaje! Nos pondremos en contacto contigo en breve.');
+                    }, 3000);
+                }, 1500);
+            });
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animation for contact cards
+        const contactMethods = document.querySelectorAll('.contact-method');
+        
+        contactMethods.forEach((method, index) => {
+            method.style.opacity = "0";
+            method.style.transform = "translateY(20px)";
+            method.style.transition = "opacity 0.5s, transform 0.5s";
+            
+            setTimeout(() => {
+                method.style.opacity = "1";
+                method.style.transform = "translateY(0)";
+            }, 300 * index);
+        });
+    </script>
+</body>
+</html>

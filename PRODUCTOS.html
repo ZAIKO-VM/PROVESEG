@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Productos | PROVESEG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            width: 200px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .cart-icon, .user-icon {
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            color: var(--white);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: #e9ecef;
+            padding: 1rem 0;
+            margin-bottom: 2rem;
+        }
+        
+        .breadcrumb-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .breadcrumb a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .breadcrumb a:hover {
+            color: var(--primary);
+        }
+        
+        .breadcrumb i {
+            margin: 0 0.5rem;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+        
+        /* Catalog Layout */
+        .catalog-container {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        /* Filters */
+        .filters {
+            width: 280px;
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
+        }
+        
+        .filter-section {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 1.5rem;
+        }
+        
+        .filter-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .filter-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .filter-title h3 {
+            font-size: 1.1rem;
+        }
+        
+        .filter-content {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .filter-group {
+            margin-bottom: 0.8rem;
+        }
+        
+        .filter-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+            padding: 0.3rem 0;
+        }
+        
+        .filter-group label:hover {
+            color: var(--primary);
+        }
+        
+        .filter-group input {
+            margin-right: 0.8rem;
+        }
+        
+        .price-range {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+        
+        .price-range span {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+        
+        .range-slider {
+            width: 100%;
+            height: 5px;
+            margin: 1rem 0;
+            background: #e9ecef;
+            border-radius: 5px;
+            outline: none;
+        }
+        
+        /* Products Grid */
+        .products-section {
+            flex: 1;
+        }
+        
+        .products-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            background-color: var(--white);
+            padding: 1.2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .sort-options select {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            background-color: var(--white);
+        }
+        
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .view-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e9ecef;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .view-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .view-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .product-img {
+            height: 220px;
+            background-color: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 1.5rem;
+        }
+        
+        .product-tag {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+        
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-description {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+        
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .spec-badge {
+            background-color: #e9ecef;
+            padding: 0.3rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            color: #495057;
+        }
+        
+        .product-price {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-rating {
+            color: #ffc107;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .rating-count {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+        
+        .product-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+        
+        .btn-cart {
+            background-color: var(--accent);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-cart:hover {
+            background-color: #21867a;
+        }
+        
+        .btn-details {
+            background-color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border-radius: 5px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-details:hover {
+            background-color: #122c5c;
+        }
+        
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        
+        .pagination-container {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .page-item {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .page-item:hover, .page-item.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Featured Banner */
+        .featured-banner {
+            background: linear-gradient(rgba(26, 58, 108, 0.9), rgba(26, 58, 108, 0.9)), url('https://images.unsplash.com/photo-1563014959-7aaa83350992?ixlib=rb-4.0.3') center/cover;
+            border-radius: 10px;
+            padding: 3rem;
+            color: var(--white);
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .featured-banner h2 {
+            color: var(--white);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-banner p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .catalog-container {
+                flex-direction: column;
+            }
+            
+            .filters {
+                width: 100%;
+                position: static;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                margin: 1.5rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .products-header {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .product-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn-cart, .btn-details {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div style="background-color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
+                <h1>PROVESEG</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="boton-enlace"></i> Inicio</a></li>
+                <li><a href="PRODUCTOS.html"><i class="boton-enlace"></i> Productos</a></li>
+                <li><a href="SERVICIO.html"><i class="fas fa-cogs"></i> Servicios</a></li>
+                <li><a href="EMPRESA.html"><i class="fas fa-building"></i> Empresa</a></li>
+                <li><a href="CONTACTO.html"><i class="fas fa-phone"></i> Contacto</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar productos...">
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">3</span>
+                </div>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <div class="container breadcrumb-container">
+            <a href="#"><i class="fas fa-home"></i> Inicio</a>
+            <i class="fas fa-chevron-right"></i>
+            <span>Catálogo de Productos</span>
+        </div>
+    </div>
+
+    <!-- Catalog Section -->
+    <div class="container catalog-container">
+        <!-- Filters -->
+        <aside class="filters">
+            <div class="filter-section">
+                <div class="filter-title">
+                    <h3>Categorías</h3>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Cámaras de Seguridad
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Sistemas de Alarma
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Control de Acceso
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Detección de Incendios
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Seguridad para Vehículos
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Monitoreo Remoto
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-title">
+                    <h3>Precio</h3>
+                </div>
+                <input type="range" min="0" max="1000" value="500" class="range-slider">
+                <div class="price-range">
+                    <span>$0</span>
+                    <span>$1000</span>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-title">
+                    <h3>Marcas</h3>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Hikvision
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Dahua
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Bosch
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Honeywell
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Axis
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="filter-section">
+                <div class="filter-title">
+                    <h3>Características</h3>
+                </div>
+                <div class="filter-content">
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Inalámbrico
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Resistente al Agua
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Visión Nocturna
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> Conectividad App
+                        </label>
+                    </div>
+                    <div class="filter-group">
+                        <label>
+                            <input type="checkbox"> HD/4K
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn-cart" style="width: 100%; margin-top: 1rem;">
+                <i class="fas fa-filter"></i> Aplicar Filtros
+            </button>
+            <button class="btn-details" style="width: 100%; margin-top: 0.5rem; background-color: #e9ecef; color: #495057;">
+                <i class="fas fa-redo"></i> Limpiar Filtros
+            </button>
+        </aside>
+        
+        <!-- Products Section -->
+        <section class="products-section">
+            <div class="products-header">
+                <h2>Catálogo de Productos <span style="color: var(--gray); font-size: 1rem;">(48 productos)</span></h2>
+                <div style="display: flex; gap: 1.5rem;">
+                    <div class="sort-options">
+                        <select>
+                            <option>Ordenar por: Destacados</option>
+                            <option>Precio: Menor a Mayor</option>
+                            <option>Precio: Mayor a Menor</option>
+                            <option>Mejor Valorados</option>
+                            <option>Novedades</option>
+                        </select>
+                    </div>
+                    <div class="view-options">
+                        <button class="view-btn active">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button class="view-btn">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-video" style="font-size: 4rem; color: var(--primary);"></i>
+                        <span class="product-tag">Nuevo</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cámara IP 4K Exterior</h3>
+                        <p class="product-description">Cámara de vigilancia exterior con resolución 4K, visión nocturna de 30m y resistencia IP67.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">4K Ultra HD</span>
+                            <span class="spec-badge">IP67</span>
+                            <span class="spec-badge">Visión Nocturna</span>
+                        </div>
+                        <div class="product-price">$189.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-count">(24)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-bell" style="font-size: 4rem; color: var(--secondary);"></i>
+                        <span class="product-tag">Oferta</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Kit Alarma Inalámbrica</h3>
+                        <p class="product-description">Sistema de alarma completo con panel central, 2 sensores de movimiento y 3 contactos magnéticos.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">Inalámbrico</span>
+                            <span class="spec-badge">App Control</span>
+                            <span class="spec-badge">3 años garantía</span>
+                        </div>
+                        <div class="product-price">$299.99 <span style="text-decoration: line-through; color: var(--gray); font-size: 0.9rem;">$349.99</span></div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-count">(18)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-lock" style="font-size: 4rem; color: var(--dark);"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cerrojo Digital Inteligente</h3>
+                        <p class="product-description">Cerrojo electrónico con desbloqueo por huella dactilar, código PIN y mando a distancia.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">Huella Digital</span>
+                            <span class="spec-badge">Bluetooth</span>
+                            <span class="spec-badge">Resistente</span>
+                        </div>
+                        <div class="product-price">$149.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <span class="rating-count">(32)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-fire-extinguisher" style="font-size: 4rem; color: var(--accent);"></i>
+                        <span class="product-tag">Destacado</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Detector de Humo Inteligente</h3>
+                        <p class="product-description">Detector de humo y monóxido de carbono con alerta a smartphone y autoapagado en caso de incendio.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">WiFi</span>
+                            <span class="spec-badge">Batería 10 años</span>
+                            <span class="spec-badge">Certificado UL</span>
+                        </div>
+                        <div class="product-price">$79.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-count">(15)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 5 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-eye" style="font-size: 4rem; color: #6f42c1;"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cámara Domo PTZ 360°</h3>
+                        <p class="product-description">Cámara motorizada con giro 360°, zoom óptico 20x y seguimiento automático de movimiento.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">HD 1080p</span>
+                            <span class="spec-badge">Zoom 20x</span>
+                            <span class="spec-badge">PTZ</span>
+                        </div>
+                        <div class="product-price">$249.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-count">(27)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-microphone-alt" style="font-size: 4rem; color: #20c997;"></i>
+                        <span class="product-tag">Nuevo</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Intercomunicador Video HD</h3>
+                        <p class="product-description">Intercomunicador con pantalla táctil de 7", video HD y desbloqueo remoto desde smartphone.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">Pantalla 7"</span>
+                            <span class="spec-badge">HD</span>
+                            <span class="spec-badge">2 años garantía</span>
+                        </div>
+                        <div class="product-price">$179.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-count">(12)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-car" style="font-size: 4rem; color: #fd7e14;"></i>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Sistema GPS para Vehículos</h3>
+                        <p class="product-description">Localizador GPS con alerta antirrobo, geocercas y monitoreo en tiempo real a través de app.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">GPS/GLONASS</span>
+                            <span class="spec-badge">App Móvil</span>
+                            <span class="spec-badge">Batería 2 años</span>
+                        </div>
+                        <div class="product-price">$129.99</div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <span class="rating-count">(21)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 8 -->
+                <div class="product-card">
+                    <div class="product-img">
+                        <i class="fas fa-wifi" style="font-size: 4rem; color: #0dcaf0;"></i>
+                        <span class="product-tag">Oferta</span>
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Router Seguro VPN</h3>
+                        <p class="product-description">Router con VPN integrado, firewall avanzado y protección contra intrusiones para redes seguras.</p>
+                        <div class="product-specs">
+                            <span class="spec-badge">WiFi 6</span>
+                            <span class="spec-badge">VPN</span>
+                            <span class="spec-badge">Firewall</span>
+                        </div>
+                        <div class="product-price">$159.99 <span style="text-decoration: line-through; color: var(--gray); font-size: 0.9rem;">$199.99</span></div>
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                            <i class="far fa-star"></i>
+                            <span class="rating-count">(16)</span>
+                        </div>
+                        <div class="product-actions">
+                            <button class="btn-cart">
+                                <i class="fas fa-shopping-cart"></i> Añadir
+                            </button>
+                            <button class="btn-details">Detalles</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured Banner -->
+            <div class="featured-banner">
+                <h2>Kit de Seguridad Premium para Hogar</h2>
+                <p>Todo lo que necesitas para proteger tu hogar en un solo paquete con un 15% de descuento. Incluye 4 cámaras, sistema de alarma y cerraduras inteligentes.</p>
+                <button class="btn-details" style="padding: 0.8rem 2.5rem; background-color: var(--accent);">Ver Oferta</button>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="pagination">
+                <div class="pagination-container">
+                    <div class="page-item"><i class="fas fa-chevron-left"></i></div>
+                    <div class="page-item active">1</div>
+                    <div class="page-item">2</div>
+                    <div class="page-item">3</div>
+                    <div class="page-item">4</div>
+                    <div class="page-item">5</div>
+                    <div class="page-item"><i class="fas fa-chevron-right"></i></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>PROVESEG</h3>
+                    <p>Líderes en soluciones de seguridad para hogares y empresas desde 2005. Ofrecemos productos de calidad y servicios profesionales.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Categorías</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Cámaras de Vigilancia</a></li>
+                        <li><a href="#">Sistemas de Alarma</a></li>
+                        <li><a href="#">Control de Acceso</a></li>
+                        <li><a href="#">Detección de Incendios</a></li>
+                        <li><a href="#">Productos para Vehículos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Principal 1234, Ciudad, País</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (800) 123-4567</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@proveseg.com</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <p>Lun-Vie: 9:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PROVESEG. Todos los derechos reservados. | <a href="#" style="color: #adb5bd;">Términos y Condiciones</a> | <a href="#" style="color: #adb5bd;">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Funcionalidad del carrito
+        document.querySelectorAll('.btn-cart').forEach(button => {
+            button.addEventListener('click', function() {
+                const cartCount = document.querySelector('.cart-count');
+                let count = parseInt(cartCount.textContent);
+                cartCount.textContent = count + 1;
+                
+                // Animación de confirmación
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Añadido';
+                this.style.backgroundColor = '#2a9d8f';
+                
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.style.backgroundColor = '';
+                }, 2000);
+            });
+        });
+        
+        // Cambio de vista
+        document.querySelectorAll('.view-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelectorAll('.view-btn').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                this.classList.add('active');
+                
+                // Aquí iría la lógica para cambiar entre vista de cuadrícula y lista
+            });
+        });
+        
+        // Filtros desplegables
+        document.querySelectorAll('.filter-title').forEach(title => {
+            title.addEventListener('click', function() {
+                const content = this.nextElementSibling;
+                content.style.display = content.style.display === 'none' ? 'block' : 'none';
+            });
+        });
+        
+        // Simular rango de precios
+        const rangeSlider = document.querySelector('.range-slider');
+        const priceRange = document.querySelector('.price-range');
+        
+        rangeSlider.addEventListener('input', function() {
+            const minPrice = 0;
+            const maxPrice = 1000;
+            const currentValue = this.value;
+            const leftPosition = (currentValue / maxPrice) * 100;
+            
+            priceRange.innerHTML = `<span>$${minPrice}</span><span>$${currentValue}</span>`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios de Seguridad | PROVESEG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a6c;
+            --secondary: #e63946;
+            --accent: #2a9d8f;
+            --light: #f1faee;
+            --dark: #1d3557;
+            --gray: #8d99ae;
+            --white: #ffffff;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: var(--dark);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-left: 1.5rem;
+        }
+        
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        .nav-menu a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .search-bar {
+            position: relative;
+            margin-right: 1.5rem;
+        }
+        
+        .search-bar input {
+            padding: 0.5rem 1rem 0.5rem 2.5rem;
+            border: none;
+            border-radius: 30px;
+            width: 200px;
+        }
+        
+        .search-bar i {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .cart-icon, .user-icon {
+            font-size: 1.2rem;
+            margin-left: 1rem;
+            color: var(--white);
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .services-hero {
+            background: linear-gradient(rgba(26, 58, 108, 0.85), rgba(26, 58, 108, 0.85)), url('https://images.unsplash.com/photo-1551524559-8af4e6624178?ixlib=rb-4.0.3') center/cover;
+            color: var(--white);
+            text-align: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        
+        .services-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .services-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .services-hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background-color: #c1121f;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(230, 57, 70, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            margin-left: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Services Section */
+        .services-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .service-card {
+            background-color: var(--light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--white);
+        }
+        
+        .service-content {
+            padding: 2rem;
+        }
+        
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .service-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        
+        .service-features {
+            margin-bottom: 1.5rem;
+        }
+        
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0.8rem;
+        }
+        
+        .feature-item i {
+            color: var(--accent);
+            margin-right: 0.8rem;
+            margin-top: 0.3rem;
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e9ecef 100%);
+            position: relative;
+        }
+        
+        .process-container {
+            position: relative;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 3rem;
+            position: relative;
+        }
+        
+        .process-steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: var(--accent);
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 20%;
+        }
+        
+        .step-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .step:hover .step-circle {
+            background: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .step h4 {
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Why Choose Section */
+        .why-choose {
+            padding: 5rem 0;
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .why-choose .section-title h2 {
+            color: var(--white);
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .benefit-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .benefit-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: var(--light);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(42, 157, 143, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+        
+        .testimonial-content {
+            position: relative;
+            z-index: 2;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: var(--gray);
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 0.2rem;
+        }
+        
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, #1a3a6c 0%, #1d3557 100%);
+            color: var(--white);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+        
+        .contact-info h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+        
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-right: 1rem;
+            min-width: 40px;
+        }
+        
+        .contact-form {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            border-color: var(--accent);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(42, 157, 143, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn-submit {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: block;
+            width: 100%;
+        }
+        
+        .btn-submit:hover {
+            background: #21867a;
+            transform: translateY(-3px);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background-color: var(--white);
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .faq-question {
+            background: var(--primary);
+            color: var(--white);
+            padding: 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-question i {
+            transition: var(--transition);
+        }
+        
+        .faq-answer {
+            background: var(--light);
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 1.5rem;
+            max-height: 500px;
+        }
+        
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+        
+        /* Call to Action */
+        .cta-section {
+            padding: 5rem 0;
+            background: linear-gradient(rgba(42, 157, 143, 0.9), rgba(42, 157, 143, 0.9)), url('https://images.unsplash.com/photo-1591123120675-6f7f1aae0e5b?ixlib=rb-4.0.3') center/cover;
+            color: var(--white);
+            text-align: center;
+        }
+        
+        .cta-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cta-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .cta-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info i {
+            margin-right: 1rem;
+            color: var(--accent);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .process-steps {
+                flex-wrap: wrap;
+            }
+            
+            .step {
+                width: 45%;
+                margin-bottom: 2rem;
+            }
+            
+            .process-steps::before {
+                display: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            .nav-menu {
+                margin: 1.5rem 0;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .services-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .step {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .nav-menu {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .nav-menu li {
+                margin: 0.5rem 0;
+            }
+            
+            .search-bar {
+                width: 100%;
+                margin: 1rem 0;
+            }
+            
+            .search-bar input {
+                width: 100%;
+            }
+            
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 1rem;
+            }
+            
+            .btn-outline {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div style="background-color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                    <i class="fas fa-shield-alt" style="font-size: 1.8rem; color: var(--primary);"></i>
+                </div>
+                <h1>PROVESEG</h1>
+            </div>
+            
+            <ul class="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> Inicio</a></li>
+                <li><a href="PRODUCTOS.html"><i class="fas fa-box"></i> Productos</a></li>
+                <li><a href="SERVICIO.html" class="active"><i class="fas fa-cogs"></i> Servicios</a></li>
+                <li><a href="EMPRESA.html"><i class="fas fa-building"></i> Empresa</a></li>
+                <li><a href="CONTACTO.html"><i class="fas fa-phone"></i> Contacto</a></li>
+            </ul>
+            
+            <div class="header-actions">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Buscar servicios...">
+                </div>
+                <div class="user-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="services-hero">
+        <div class="container services-hero-content">
+            <h1>Servicios Profesionales de Seguridad</h1>
+            <p>Soluciones integrales adaptadas a sus necesidades de protección residencial, comercial e industrial con tecnología de última generación.</p>
+            <a href="#contacto" class="btn">Solicitar Asesoría</a>
+            <a href="#servicios" class="btn btn-outline">Ver Servicios</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="services-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nuestros Servicios</h2>
+                <p>Ofrecemos soluciones completas para todas sus necesidades de seguridad</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(26, 58, 108, 0.9), rgba(26, 58, 108, 0.9));">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Instalación de CCTV</h3>
+                        <p>Sistemas de videovigilancia profesionales con cámaras HD y 4K para monitoreo en tiempo real.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Diseño de sistemas personalizados</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Instalación profesional certificada</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Configuración de monitoreo remoto</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(230, 57, 70, 0.9), rgba(230, 57, 70, 0.9));">
+                        <i class="fas fa-bell"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Sistemas de Alarma</h3>
+                        <p>Soluciones avanzadas de detección de intrusos con monitoreo 24/7 y respuesta inmediata.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Alarmas inalámbricas y cableadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Integración con aplicaciones móviles</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Servicio de monitoreo profesional</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(42, 157, 143, 0.9), rgba(42, 157, 143, 0.9));">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Control de Acceso</h3>
+                        <p>Sistemas avanzados para gestionar el acceso a instalaciones con máxima seguridad.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cerraduras electrónicas y biométricas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sistemas de reconocimiento facial</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Control de visitantes y empleados</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(29, 53, 87, 0.9), rgba(29, 53, 87, 0.9));">
+                        <i class="fas fa-fire-extinguisher"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Protección Contra Incendios</h3>
+                        <p>Sistemas de detección y extinción de incendios para proteger personas y propiedades.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Diseño e instalación de sistemas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Mantenimiento preventivo</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cumplimiento de normativas</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(109, 76, 156, 0.9), rgba(109, 76, 156, 0.9));">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Seguridad Perimetral</h3>
+                        <p>Soluciones avanzadas para la protección de perímetros en instalaciones críticas.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sensores de barrera infrarroja</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Cercas electrificadas</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Sistemas de detección de intrusos</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-icon" style="background: linear-gradient(rgba(253, 126, 20, 0.9), rgba(253, 126, 20, 0.9));">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Monitoreo 24/7</h3>
+                        <p>Servicio de monitoreo continuo con respuesta inmediata ante cualquier incidente.</p>
+                        <div class="service-features">
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Centro de monitoreo certificado</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Respuesta en menos de 90 segundos</span>
+                            </div>
+                            <div class="feature-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Reportes mensuales de actividad</span>
+                            </div>
+                        </div>
+                        <a href="#" class="btn" style="background: var(--primary);">Más Información</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container process-container">
+            <div class="section-title">
+                <h2>Nuestro Proceso de Trabajo</h2>
+                <p>Así garantizamos soluciones de seguridad efectivas y personalizadas</p>
+            </div>
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-circle">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h4>Consulta Inicial</h4>
+                    <p>Evaluamos tus necesidades específicas de seguridad</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-circle">
+                        <i class="fas fa-clipboard-list"></i>
+                    </div>
+                    <h4>Propuesta Personalizada</h4>
+                    <p>Diseñamos una solución adaptada a tu presupuesto</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-circle">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Implementación</h4>
+                    <p>Instalación profesional por técnicos certificados</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-circle">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h4>Capacitación</h4>
+                    <p>Te enseñamos a usar el sistema eficientemente</p>
+                </div>
+                
+                <div class="step">
+                    <div class="step-circle">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <h4>Soporte Continuo</h4>
+                    <p>Mantenimiento y soporte técnico permanente</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Section -->
+    <section class="why-choose">
+        <div class="container">
+            <div class="section-title">
+                <h2>¿Por Qué Elegir Nuestros Servicios?</h2>
+                <p style="color: rgba(255,255,255,0.8);">Ventajas que nos diferencian en el mercado de seguridad</p>
+            </div>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Expertos Certificados</h3>
+                    <p>Técnicos con certificaciones internacionales en seguridad</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h3>Calidad Garantizada</h3>
+                    <p>Trabajamos con equipos de primera calidad y garantía extendida</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Respuesta Rápida</h3>
+                    <p>Soporte técnico 24/7 con tiempos de respuesta mínimos</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3>Soluciones Integrales</h3>
+                    <p>Protección completa para todos los aspectos de seguridad</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-hand-holding-usd"></i>
+                    </div>
+                    <h3>Precios Competitivos</h3>
+                    <p>Soluciones de alta calidad a precios accesibles</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Tecnología de Punta</h3>
+                    <p>Implementamos las últimas innovaciones en seguridad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Lo Que Dicen Nuestros Clientes</h2>
+                <p>Experiencias reales con nuestros servicios de seguridad</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Contraté a PROVESEG para proteger mi cadena de tiendas y los resultados han sido excepcionales. Su sistema de CCTV integrado con alarmas ha reducido los robos en un 90%. El servicio postventa es rápido y eficiente."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">JR</div>
+                        <div class="author-info">
+                            <h4>Juan Rodríguez</h4>
+                            <p>Dueño de Negocio - RetailSeguro</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Como administradora de condominios, PROVESEG nos implementó un sistema completo de control de acceso y cámaras. Ahora los residentes se sienten mucho más seguros y la administración es más eficiente. Altamente recomendados."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">MG</div>
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <p>Administradora - Residencial Los Alamos</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "La instalación del sistema de seguridad en nuestra fábrica fue impecable. Los técnicos trabajaron sin interrumpir nuestras operaciones y el sistema ha prevenido varios intentos de robo. La inversión valió cada centavo."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">CP</div>
+                        <div class="author-info">
+                            <h4>Carlos Pérez</h4>
+                            <p>Gerente General - Industrias Metálicas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Resolvemos tus dudas sobre nuestros servicios</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Cuánto tiempo toma la instalación de un sistema de seguridad?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>El tiempo de instalación varía según la complejidad del sistema. Para una vivienda promedio, la instalación básica puede completarse en 1 día. Sistemas comerciales más complejos pueden requerir de 3 a 5 días. Siempre realizamos una evaluación previa para dar un cronograma preciso.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Ofrecen mantenimiento para los sistemas instalados?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, ofrecemos planes de mantenimiento preventivo que incluyen revisiones trimestrales o semestrales según sus necesidades. Estos planes garantizan el óptimo funcionamiento de su sistema y prolongan su vida útil. También ofrecemos soporte técnico 24/7 para cualquier emergencia.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Puedo integrar nuevos equipos a un sistema existente?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>En la mayoría de los casos sí. Nuestros sistemas están diseñados para ser escalables. Evaluamos su instalación actual y proponemos la mejor solución de integración. Trabajamos con tecnología abierta que permite la integración de diferentes marcas y dispositivos.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Qué certificaciones tienen sus técnicos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Nuestros técnicos cuentan con certificaciones de los principales fabricantes como Hikvision, Dahua, Bosch y Honeywell. Además, están certificados en normas de seguridad eléctrica y cuentan con entrenamiento continuo en las últimas tecnologías del sector.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>¿Ofrecen servicios para empresas fuera de la ciudad?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sí, brindamos cobertura a nivel nacional. Hemos implementado sistemas de seguridad en plantas industriales, minas y proyectos agrícolas en zonas remotas. Nuestro equipo móvil está equipado para trabajar en cualquier ubicación del país.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contáctenos</h2>
+                <p style="color: rgba(255,255,255,0.8);">Solicite una asesoría gratuita de seguridad</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Hablemos sobre su proyecto de seguridad</h3>
+                    <p style="margin-bottom: 2rem;">Nuestro equipo de expertos está listo para evaluar sus necesidades y proponer la solución óptima para su hogar o negocio.</p>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Teléfono</h4>
+                            <p>+1 (800) 123-4567</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4>Email</h4>
+                            <p>servicios@proveseg.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4>Oficinas Centrales</h4>
+                            <p>Av. Seguridad 1234, Ciudad Central, CP 15001</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horario de Atención</h4>
+                            <p>Lun-Vie: 8:00 AM - 6:00 PM<br>Sáb: 9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <h3>Solicitar Asesoría Gratuita</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nombre Completo</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Correo Electrónico</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Teléfono</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="service">Servicio de Interés</label>
+                            <select id="service" class="form-control" required>
+                                <option value="">Seleccione un servicio</option>
+                                <option value="cctv">Instalación de CCTV</option>
+                                <option value="alarmas">Sistemas de Alarma</option>
+                                <option value="acceso">Control de Acceso</option>
+                                <option value="incendios">Protección Contra Incendios</option>
+                                <option value="perimetral">Seguridad Perimetral</option>
+                                <option value="monitoreo">Monitoreo 24/7</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Mensaje</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Enviar Solicitud</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container cta-content">
+            <h2>¿Listo para mejorar su seguridad?</h2>
+            <p>Obtenga una evaluación de seguridad gratuita y personalizada de nuestros expertos</p>
+            <a href="#contacto" class="btn" style="background: var(--primary); padding: 1rem 2.5rem; font-size: 1.1rem;">Solicitar Evaluación Gratuita</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>PROVESEG</h3>
+                    <p>Líderes en soluciones de seguridad para hogares y empresas desde 2005. Ofrecemos servicios profesionales con tecnología de punta.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Servicios</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Instalación de CCTV</a></li>
+                        <li><a href="#">Sistemas de Alarma</a></li>
+                        <li><a href="#">Control de Acceso</a></li>
+                        <li><a href="#">Protección Contra Incendios</a></li>
+                        <li><a href="#">Seguridad Perimetral</a></li>
+                        <li><a href="#">Monitoreo 24/7</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Inicio</a></li>
+                        <li><a href="#">Productos</a></li>
+                        <li><a href="#">Servicios</a></li>
+                        <li><a href="#">Sobre Nosotros</a></li>
+                        <li><a href="#">Proyectos</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Av. Seguridad 1234, Ciudad Central</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 (800) 123-4567</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@proveseg.com</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-clock"></i>
+                        <p>Lun-Vie: 8:00 AM - 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 PROVESEG. Todos los derechos reservados. | <a href="#" style="color: #adb5bd;">Términos y Condiciones</a> | <a href="#" style="color: #adb5bd;">Política de Privacidad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
+            });
+        });
+        
+        // Form Submission
+        const contactForm = document.querySelector('.contact-form form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Simular envío exitoso
+                const submitBtn = this.querySelector('.btn-submit');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado con Éxito';
+                    submitBtn.style.backgroundColor = '#2a9d8f';
+                    
+                    // Reset form after success
+                    setTimeout(() => {
+                        this.reset();
+                        submitBtn.innerHTML = 'Enviar Solicitud';
+                        submitBtn.style.backgroundColor = '';
+                        submitBtn.disabled = false;
+                    }, 3000);
+                }, 1500);
+            });
+        }
+        
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Service Card Animation
+        const serviceCards = document.querySelectorAll('.service-card');
+        serviceCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    </script>
+</body>
+</html>
